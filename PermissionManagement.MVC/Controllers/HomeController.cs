@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PermissionManagement.MVC.Models;
 using System.Diagnostics;
@@ -18,8 +19,17 @@ namespace PermissionManagement.MVC.Controllers
         {
             return View();
         }
+        public IActionResult Treners()
+        {
+            return View();
+        }
 
-        public IActionResult Privacy()
+        public IActionResult FAQ()
+        {
+            return View();
+        }
+
+        public IActionResult Gallery()
         {
             return View();
         }
