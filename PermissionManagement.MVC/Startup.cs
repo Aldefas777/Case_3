@@ -1,3 +1,5 @@
+using ClassLibrary.Classes;
+using ClassLibrary.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +32,7 @@ namespace PermissionManagement.MVC
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultUI()
             .AddDefaultTokenProviders();
+            services.AddScoped<ICostumerRepository, CostumerRepository>();
             services.AddControllersWithViews();
         }
 
