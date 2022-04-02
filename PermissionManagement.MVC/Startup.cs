@@ -33,6 +33,7 @@ namespace PermissionManagement.MVC
                     .AddDefaultUI()
             .AddDefaultTokenProviders();
             services.AddScoped<ICostumerRepository, CostumerRepository>();
+            services.AddScoped<IQRClass, QRClass>();
             services.AddControllersWithViews();
         }
 
