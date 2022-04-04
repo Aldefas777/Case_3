@@ -17,7 +17,7 @@
         <tr><td>Id</td><td>Name</td><td>Surname</td><td>Second Name</td><td>Date Registration</td><td>Aboniment</td></tr>
     @foreach(var item in @Model)
     {
-         <tr><td>@item.Id</td><td>@item.Name</td><td>@item.Surname</td><td>@item.SecondName</td><td>@item.DateRegistration</td><td>@item.Aboniment</td><td><a href="/Costumers/Delete/@item.Id">Удалить</a></td><td><a href="/Costumers/Update/@item.Id">Редактировать</a></td></tr>
+         <tr><td>@item.Id</td><td>@item.Name</td><td>@item.Surname</td><td>@item.SecondName</td><td>@item.DateRegistration</td><td>@item.Aboniment</td><td><a href="/Costumers/Delete/@item.Id">Удалить</a></td><td><a href="/Costumers/Update/@item.Id">Редактировать</a></td><td><a href="/Costumers/CostumersPerson/@item.Id">Просмотр</a></td></tr>
     }
     </table>
 </div>

@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Person";
+}
+
+<form method ="post">
+    <div>
+        <div class="form-group">
+           <input name="Id" type="hidden" size="50" value="@ViewBag.Id" />
+       </div>
+
+       <table class="table">
+            @foreach(var item in @Model)
+    {
+           <tr><td>Имя</td><td>@item.Name</td></tr>
+           <tr><td>Фамилия</td><td>@item.Surname</td></tr>
+           <tr><td>Отчество</td><td>@item.SecondName</td></tr>
+           <tr><td>Дата регистрации</td><td>@item.DateRegistration</td></tr>
+           <tr><td>Абонимент</td><td>@item.Aboniment</td></tr>
+    }
+       </table>
+    </div>
+</form>

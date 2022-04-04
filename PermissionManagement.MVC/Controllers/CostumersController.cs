@@ -29,6 +29,13 @@ namespace PermissionManagement.MVC.Controllers
             return View(model);
         }
 
+        public IActionResult CostumersPerson(int? id)
+        {
+            ViewBag.Id = id;
+            var model = _costumerRepository.GetPerson(id);
+            return View(model);
+        }
+
         public IActionResult Delete(int? id)
         {
             ViewBag.Id = id;

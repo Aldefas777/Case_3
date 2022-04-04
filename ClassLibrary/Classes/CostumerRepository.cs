@@ -79,6 +79,16 @@ namespace ClassLibrary.Classes
             }
         }
 
+        public IEnumerable<Costumers> GetPerson(int? id)
+        {
+            using (var db = GetConnection())
+            {
+                var result = db.Query<Costumers>($"SELECT * FROM [Costumers] WHERE id = {id}").ToList();
+
+                return result;
+            }
+        }
+
         public void UpdateUser(int? Id, string names, string surname, string SecondName, string Aboniment)
         {
             using (var db = GetConnection())

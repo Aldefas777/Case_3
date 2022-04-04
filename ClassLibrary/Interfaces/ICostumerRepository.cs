@@ -8,6 +8,8 @@ namespace ClassLibrary.Interfaces
     public interface ICostumerRepository
     {
         List<Costumers> GetUsers(string search);
+        IEnumerable<Costumers> GetPerson(int? id);
+
         void AddUsers(int? id, string names, string surname, string SecondName, string Aboniment);
         void UpdateUser(int? Id, string names, string surname, string SecondName, string Aboniment);
         IEnumerable<Costumers> DeleteUser(int? id);
