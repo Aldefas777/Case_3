@@ -27,12 +27,12 @@ namespace PermissionManagement.MVC
         {
             services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>();
             services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
             services.AddIdentity<IdentityUser, IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultUI()
             .AddDefaultTokenProviders();
-            services.AddScoped<ICostumerRepository, CostumerRepository>();
+            services.AddScoped<ICustumerRepository, CustumerRepository>();
             services.AddScoped<IQRClass, QRClass>();
             services.AddControllersWithViews();
         }

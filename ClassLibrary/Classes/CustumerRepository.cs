@@ -12,22 +12,13 @@ using ClassLibrary.Interfaces;
 
 namespace ClassLibrary.Classes
 {
-    public class CostumerRepository : ICostumerRepository
+    public class CustumerRepository : ICustumerRepository 
     {
-        public SqliteConnection GetConnection()
-        {
-            var builder = new ConfigurationBuilder();
-            builder.SetBasePath(Directory.GetCurrentDirectory());
-            builder.AddJsonFile("appsettings.json");
-            var config = builder.Build();
-            string connectionString = config.GetConnectionString("SqliteConnection");
-            return new SqliteConnection(connectionString);
-        }
-
-        public void AddUsers(int? Id, string names, string surname, string SecondName, string Aboniment)
+        BaseRepository baseRepository = new BaseRepository();
+        public void AddUsers(int Id, string names, string surname, string SecondName, string Aboniment)
         {
 
-            using (var db = GetConnection())
+            using (var db = baseRepository.GetConnection())
             {
                 db.Open();
                 SqliteCommand insertCommand = new SqliteCommand();
@@ -49,29 +40,29 @@ namespace ClassLibrary.Classes
                 db.Close();
             }
         }
-        public IEnumerable<Costumers> DeleteUser(int? id)
+        public IEnumerable<Custumers> DeleteUser(int id)
         {
-            using (var db = GetConnection())
+            using (var db = baseRepository.GetConnection())
             {
-                var result = db.Query<Costumers>($"DELETE FROM [Costumers] WHERE id = {id}");
+                var result = db.Query<Custumers>($"DELETE FROM [Costumers] WHERE id = {id}");
 
                 return result;
             }
         }
 
-        public List<Costumers> GetUsers(string search)
+        public List<Custumers> GetUsers(string search)
         {
 
-            using (var db = GetConnection())
+            using (var db = baseRepository.GetConnection())
             {
                 if (search != null)
                 {
-                    var result = db.Query<Costumers>($"SELECT * FROM [Costumers] WHERE Surname = '{search}' OR Name = '{search}' OR SecondName = '{search}' OR Aboniment = '{search}'").ToList();
+                    var result = db.Query<Custumers>($"SELECT * FROM [Costumers] WHERE Surname = '{search}' OR Name = '{search}' OR SecondName = '{search}' OR Aboniment = '{search}'").ToList();
                     return result;
                 }
                 else
                 {
-                    var result = db.Query<Costumers>("SELECT * FROM Costumers").ToList();
+                    var result = db.Query<Custumers>("SELECT * FROM Costumers").ToList();
                     return result;
                 }
 
@@ -79,19 +70,19 @@ namespace ClassLibrary.Classes
             }
         }
 
-        public IEnumerable<Costumers> GetPerson(int? id)
+        public IEnumerable<Custumers> GetPerson(int id)
         {
-            using (var db = GetConnection())
+            using (var db = baseRepository.GetConnection())
             {
-                var result = db.Query<Costumers>($"SELECT * FROM [Costumers] WHERE id = {id}").ToList();
+                var result = db.Query<Custumers>($"SELECT * FROM [Costumers] WHERE id = {id}").ToList();
 
                 return result;
             }
         }
 
-        public void UpdateUser(int? Id, string names, string surname, string SecondName, string Aboniment)
+        public void UpdateUser(int Id, string names, string surname, string SecondName, string Aboniment)
         {
-            using (var db = GetConnection())
+            using (var db = baseRepository.GetConnection())
             {
                 db.Open();
                 SqliteCommand insertCommand = new SqliteCommand();

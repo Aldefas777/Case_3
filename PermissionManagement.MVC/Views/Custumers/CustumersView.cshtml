@@ -12,12 +12,13 @@
         <input name="search" type="text" size="100" />
          <INPUT TYPE="SUBMIT" NAME="BN" VALUE ="Найти">
     </form>
+    <a href="/Custumers/Add">Добавить</a>
 
     <table class="table">
         <tr><td>Id</td><td>Name</td><td>Surname</td><td>Second Name</td><td>Date Registration</td><td>Aboniment</td></tr>
     @foreach(var item in @Model)
     {
-         <tr><td>@item.Id</td><td>@item.Name</td><td>@item.Surname</td><td>@item.SecondName</td><td>@item.DateRegistration</td><td>@item.Aboniment</td><td><a href="/Costumers/Delete/@item.Id">Удалить</a></td><td><a href="/Costumers/Update/@item.Id">Редактировать</a></td><td><a href="/Costumers/CostumersPerson/@item.Id">Просмотр</a></td></tr>
+         <tr><td>@item.Id</td><td>@item.Name</td><td>@item.Surname</td><td>@item.SecondName</td><td>@item.DateRegistration</td><td>@item.Aboniment</td><td><a href="/Custumers/Delete/@item.Id">Удалить</a></td><td><a href="/Custumers/Update/@item.Id">Редактировать</a></td><td><a href="/Custumers/CustumersPerson/@item.Id">Просмотр</a></td></tr>
     }
     </table>
 </div>

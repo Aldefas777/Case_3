@@ -1,4 +1,5 @@
-﻿using ClassLibrary.Interfaces;
+﻿using ClassLibrary.Classes;
+using ClassLibrary.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PermissionManagement.MVC.Models;
@@ -6,12 +7,12 @@ using System.Diagnostics;
 
 namespace PermissionManagement.MVC.Controllers
 {
-    public class CostumersController : Controller
+    public class CustumersController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        public ICostumerRepository _costumerRepository;
+        public ICustumerRepository _costumerRepository;
 
-        public CostumersController(ILogger<HomeController> logger, ICostumerRepository costumerRepository)
+        public CustumersController(ILogger<HomeController> logger, ICustumerRepository costumerRepository)
         {
             _logger = logger;
             _costumerRepository = costumerRepository;
@@ -23,27 +24,27 @@ namespace PermissionManagement.MVC.Controllers
             return View();
         }
 
-        public IActionResult CostumersView(string search)
+        public IActionResult CustumersView(string search)
         {
             var model = _costumerRepository.GetUsers(search);
             return View(model);
         }
 
-        public IActionResult CostumersPerson(int? id)
+        public IActionResult CustumersPerson(int id)
         {
             ViewBag.Id = id;
             var model = _costumerRepository.GetPerson(id);
             return View(model);
         }
 
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(int id)
         {
             ViewBag.Id = id;
             var model = _costumerRepository.DeleteUser(id);
             return View(model);
         }
 
-        public IActionResult Update(int? Id, string names, string surname, string SecondName, string Aboniment)
+        public IActionResult Update(int Id, string names, string surname, string SecondName, string Aboniment)
         {
             ViewBag.Id = Id;
             ViewBag.Names = names;
