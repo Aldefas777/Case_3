@@ -7,11 +7,11 @@ namespace ClassLibrary.Interfaces
 {
     public interface ICustumerRepository
     {
-        List<Custumers> GetUsers(string search);
-        IEnumerable<Custumers> GetPerson(int id);
+        List<Custumers> GetCustumers(string search);
+        IEnumerable<Custumers> GetCustumer(int id);
 
-        void AddUsers(int Id, string names, string surname, string SecondName, string Aboniment);
-        void UpdateUser(int Id, string names, string surname, string SecondName, string Aboniment);
-        IEnumerable<Custumers> DeleteUser(int id);
+        void AddCustumer(int Id, string names, string surname, string SecondName, string Aboniment);
+        void UpdateCustumer(int Id, string names, string surname, string SecondName, string Aboniment);
+        IEnumerable<Custumers> DeleteCustumer(int id);
     }
 }

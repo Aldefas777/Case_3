@@ -20,27 +20,27 @@ namespace PermissionManagement.MVC.Controllers
 
         public IActionResult Add(int Id, string names, string surname, string SecondName, string Aboniment)
         {
-            _costumerRepository.AddUsers(Id, names, surname, SecondName, Aboniment);
+            _costumerRepository.AddCustumer(Id, names, surname, SecondName, Aboniment);
             return View();
         }
 
         public IActionResult CustumersView(string search)
         {
-            var model = _costumerRepository.GetUsers(search);
+            var model = _costumerRepository.GetCustumers(search);
             return View(model);
         }
 
         public IActionResult CustumersPerson(int id)
         {
             ViewBag.Id = id;
-            var model = _costumerRepository.GetPerson(id);
+            var model = _costumerRepository.GetCustumer(id);
             return View(model);
         }
 
         public IActionResult Delete(int id)
         {
             ViewBag.Id = id;
-            var model = _costumerRepository.DeleteUser(id);
+            var model = _costumerRepository.DeleteCustumer(id);
             return View(model);
         }
 
@@ -48,7 +48,7 @@ namespace PermissionManagement.MVC.Controllers
         {
             ViewBag.Id = Id;
             ViewBag.Names = names;
-            _costumerRepository.UpdateUser(Id, names, surname, SecondName, Aboniment);
+            _costumerRepository.UpdateCustumer(Id, names, surname, SecondName, Aboniment);
             return View();
         }
 

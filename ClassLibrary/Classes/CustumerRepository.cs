@@ -15,7 +15,7 @@ namespace ClassLibrary.Classes
     public class CustumerRepository : ICustumerRepository 
     {
         BaseRepository baseRepository = new BaseRepository();
-        public void AddUsers(int Id, string names, string surname, string SecondName, string Aboniment)
+        public void AddCustumer(int Id, string names, string surname, string SecondName, string Aboniment)
         {
 
             using (var db = baseRepository.GetConnection())
@@ -40,7 +40,7 @@ namespace ClassLibrary.Classes
                 db.Close();
             }
         }
-        public IEnumerable<Custumers> DeleteUser(int id)
+        public IEnumerable<Custumers> DeleteCustumer(int id)
         {
             using (var db = baseRepository.GetConnection())
             {
@@ -50,7 +50,7 @@ namespace ClassLibrary.Classes
             }
         }
 
-        public List<Custumers> GetUsers(string search)
+        public List<Custumers> GetCustumers(string search)
         {
 
             using (var db = baseRepository.GetConnection())
@@ -70,7 +70,7 @@ namespace ClassLibrary.Classes
             }
         }
 
-        public IEnumerable<Custumers> GetPerson(int id)
+        public IEnumerable<Custumers> GetCustumer(int id)
         {
             using (var db = baseRepository.GetConnection())
             {
@@ -80,7 +80,7 @@ namespace ClassLibrary.Classes
             }
         }
 
-        public void UpdateUser(int Id, string names, string surname, string SecondName, string Aboniment)
+        public void UpdateCustumer(int Id, string names, string surname, string SecondName, string Aboniment)
         {
             using (var db = baseRepository.GetConnection())
             {
