@@ -15,7 +15,7 @@ namespace ClassLibrary.Classes
     public class CustumerRepository : ICustumerRepository 
     {
         BaseRepository baseRepository = new BaseRepository();
-        public void AddCustumer(int Id, string names, string surname, string SecondName, string Aboniment)
+        public void AddCustumer(CustumerModel model)
         {
 
             using (var db = baseRepository.GetConnection())
@@ -24,14 +24,14 @@ namespace ClassLibrary.Classes
                 SqliteCommand insertCommand = new SqliteCommand();
                 insertCommand.Connection = db;
 
-                if (names != null)
+                if (model.Name != null)
                 {
                     insertCommand.CommandText = "INSERT INTO Costumers VALUES (@Id, @Name, @Surname, @SecondName, @Date, @Aboniment);";
-                    insertCommand.Parameters.AddWithValue("@Id", Convert.ToInt32(Id));
-                    insertCommand.Parameters.AddWithValue("@Name", names);
-                    insertCommand.Parameters.AddWithValue("@Surname", surname);
-                    insertCommand.Parameters.AddWithValue("@SecondName", SecondName);
-                    insertCommand.Parameters.AddWithValue("@Aboniment", Aboniment);
+                    insertCommand.Parameters.AddWithValue("@Id", Convert.ToInt32(model.Id));
+                    insertCommand.Parameters.AddWithValue("@Name", model.Name);
+                    insertCommand.Parameters.AddWithValue("@Surname", model.Surname);
+                    insertCommand.Parameters.AddWithValue("@SecondName", model.SecondName);
+                    insertCommand.Parameters.AddWithValue("@Aboniment", model.Aboniment);
                     insertCommand.Parameters.AddWithValue("@Date", DateTime.Today.ToString());
                     insertCommand.ExecuteReader();
                 }
@@ -80,7 +80,7 @@ namespace ClassLibrary.Classes
             }
         }
 
-        public void UpdateCustumer(int Id, string names, string surname, string SecondName, string Aboniment)
+        public void UpdateCustumer(int Id, CustumerModel model)
         {
             using (var db = baseRepository.GetConnection())
             {
@@ -88,14 +88,14 @@ namespace ClassLibrary.Classes
                 SqliteCommand insertCommand = new SqliteCommand();
                 insertCommand.Connection = db;
 
-                if (names != null)
+                if (model.Name != null)
                 {
                     insertCommand.CommandText = "UPDATE [Costumers] SET Name = (@Name), Surname = (@Surname), SecondName = (@SecondName), Aboniment = (@Aboniment) WHERE Id = (@Id);";
                     insertCommand.Parameters.AddWithValue("@Id", Convert.ToInt32(Id));
-                    insertCommand.Parameters.AddWithValue("@Name", names);
-                    insertCommand.Parameters.AddWithValue("@Surname", surname);
-                    insertCommand.Parameters.AddWithValue("@SecondName", SecondName);
-                    insertCommand.Parameters.AddWithValue("@Aboniment", Aboniment);
+                    insertCommand.Parameters.AddWithValue("@Name", model.Name);
+                    insertCommand.Parameters.AddWithValue("@Surname", model.Surname);
+                    insertCommand.Parameters.AddWithValue("@SecondName", model.SecondName);
+                    insertCommand.Parameters.AddWithValue("@Aboniment", model.Aboniment);
                     insertCommand.ExecuteReader();
                 }
 

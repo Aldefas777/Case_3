@@ -10,8 +10,8 @@ namespace ClassLibrary.Interfaces
         List<Custumers> GetCustumers(string search);
         IEnumerable<Custumers> GetCustumer(int id);
 
-        void AddCustumer(int Id, string names, string surname, string SecondName, string Aboniment);
-        void UpdateCustumer(int Id, string names, string surname, string SecondName, string Aboniment);
+        void AddCustumer(CustumerModel model);
+        void UpdateCustumer(int Id, CustumerModel model);
         IEnumerable<Custumers> DeleteCustumer(int id);
     }
 }

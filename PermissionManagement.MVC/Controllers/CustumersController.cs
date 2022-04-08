@@ -18,9 +18,9 @@ namespace PermissionManagement.MVC.Controllers
             _costumerRepository = costumerRepository;
         }
 
-        public IActionResult Add(int Id, string names, string surname, string SecondName, string Aboniment)
+        public IActionResult Add(CustumerModel model)
         {
-            _costumerRepository.AddCustumer(Id, names, surname, SecondName, Aboniment);
+            _costumerRepository.AddCustumer(model);
             return View();
         }
 
@@ -44,11 +44,10 @@ namespace PermissionManagement.MVC.Controllers
             return View(model);
         }
 
-        public IActionResult Update(int Id, string names, string surname, string SecondName, string Aboniment)
+        public IActionResult Update(int Id, CustumerModel model)
         {
             ViewBag.Id = Id;
-            ViewBag.Names = names;
-            _costumerRepository.UpdateCustumer(Id, names, surname, SecondName, Aboniment);
+            _costumerRepository.UpdateCustumer(Id, model);
             return View();
         }
 
