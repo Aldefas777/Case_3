@@ -1,8 +1,9 @@
 ﻿@{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Подтверждение";
 }
 <form method="post">
     <label>Подтвердите удаление</label>
     <input type="hidden" value="@ViewBag.Id" name="CostumerId"/>
+    <br />
     <input type="submit" value="Delete" class="submit" />
 </form>

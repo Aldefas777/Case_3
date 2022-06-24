@@ -12,5 +12,7 @@ namespace ClassLibrary.Classes
         public string SecondName { get; set; }
         public string DateRegistration { get; set; }
         public string Aboniment { get; set; }
+
+        public string DateAboniment { get; set; }
     }
 }
