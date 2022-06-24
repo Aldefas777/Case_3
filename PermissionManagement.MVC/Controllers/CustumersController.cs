@@ -1,5 +1,6 @@
 ﻿using ClassLibrary.Classes;
 using ClassLibrary.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PermissionManagement.MVC.Models;
@@ -7,11 +8,12 @@ using System.Diagnostics;
 
 namespace PermissionManagement.MVC.Controllers
 {
+    [Authorize(Roles = "SuperAdmin, Admin")]
     public class CustumersController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         public ICustumerRepository _costumerRepository;
-
+        
         public CustumersController(ILogger<HomeController> logger, ICustumerRepository costumerRepository)
         {
             _logger = logger;
@@ -36,7 +38,7 @@ namespace PermissionManagement.MVC.Controllers
             var model = _costumerRepository.GetCustumer(id);
             return View(model);
         }
-
+        [Authorize(Roles = "SuperAdmin")]
         public IActionResult Delete(int id)
         {
             ViewBag.Id = id;

@@ -7,9 +7,11 @@ using System.Drawing.Imaging;
 using System.IO;
 using ClassLibrary;
 using ClassLibrary.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PermissionManagement.MVC.Controllers
 {
+    [Authorize(Roles = "SuperAdmin, Admin")]
     public class QRcodeController : Controller
     {
         public IQRClass _qRClass;
