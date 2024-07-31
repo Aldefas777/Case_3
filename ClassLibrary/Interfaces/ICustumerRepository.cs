@@ -11,7 +11,7 @@ namespace ClassLibrary.Interfaces
         IEnumerable<Custumers> GetCustumer(int id);
 
         void AddCustumer(CustumerModel model);
-        void UpdateCustumer(int Id, CustumerModel model);
+        void UpdateCustumer(int Id, Custumers model);
         IEnumerable<Custumers> DeleteCustumer(int id);
     }
 }
