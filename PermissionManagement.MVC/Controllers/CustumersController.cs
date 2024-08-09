@@ -2,6 +2,7 @@
 using ClassLibrary.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using PermissionManagement.MVC.Models;
 using System.Diagnostics;
@@ -46,11 +47,12 @@ namespace PermissionManagement.MVC.Controllers
             return View(model);
         }
 
-        public IActionResult Update(int Id, CustumerModel model)
+        public IActionResult Update(int Id, Custumers model)
         {
             ViewBag.Id = Id;
-            _costumerRepository.UpdateCustumer(Id, model);
-            return View();
+
+             _costumerRepository.UpdateCustumer(Id, model);
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

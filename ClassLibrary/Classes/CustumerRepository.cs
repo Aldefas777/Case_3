@@ -82,35 +82,29 @@ namespace ClassLibrary.Classes
             }
         }
 
-        public void UpdateCustumer(int Id, CustumerModel model)
+        public void UpdateCustumer(int Id, Custumers model)
         {
-            try
+            using (var db = baseRepository.GetConnection())
             {
-                using (var db = baseRepository.GetConnection())
+                db.Open();
+                SqlCommand insertCommand = new SqlCommand();
+                insertCommand.Connection = db;
+                if (model.Name != null)
                 {
-                    db.Open();
-                    SqlCommand insertCommand = new SqlCommand();
-                    insertCommand.Connection = db;
-
-                    if (model.Name != null)
-                    {
-                        insertCommand.CommandText = "UPDATE Costumers SET Name = (@Name), Surname = (@Surname), SecondName = (@SecondName), Aboniment = (@Aboniment) WHERE Id = (@Id);";
-                        insertCommand.Parameters.AddWithValue("@Id", Convert.ToInt32(Id));
-                        insertCommand.Parameters.AddWithValue("@Name", model.Name);
-                        insertCommand.Parameters.AddWithValue("@Surname", model.Surname);
-                        insertCommand.Parameters.AddWithValue("@SecondName", model.SecondName);
-                        insertCommand.Parameters.AddWithValue("@Aboniment", model.Aboniment);
-                        insertCommand.ExecuteReader();
-                    }
-
-
-                    db.Close();
+                    insertCommand.CommandText = "UPDATE Costumers SET Name = (@Name), Surname = (@Surname), SecondName = (@SecondName), Aboniment = (@Aboniment), DateAboniment = (@DateAboniment) WHERE Id = (@Id);";
+                    insertCommand.Parameters.AddWithValue("@Id", Convert.ToInt32(Id));
+                    insertCommand.Parameters.AddWithValue("@Name", model.Name);
+                    insertCommand.Parameters.AddWithValue("@Surname", model.Surname);
+                    insertCommand.Parameters.AddWithValue("@SecondName", model.SecondName);
+                    insertCommand.Parameters.AddWithValue("@Aboniment", model.Aboniment);
+                    insertCommand.Parameters.AddWithValue("@DateAboniment", model.DateAboniment.ToString());
+                    insertCommand.ExecuteReader();
                 }
+
+
+                db.Close();
             }
-            catch (Exception ex)
-            {
-                
-            }
+
         }
     }
 }

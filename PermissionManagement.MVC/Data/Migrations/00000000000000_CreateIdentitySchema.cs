@@ -153,6 +153,25 @@ namespace PermissionManagement.MVC.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Costumers",
+                columns: table => new
+                 {
+                    Id = table.Column<int>(nullable: false)
+                   .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: false),
+                    Surname = table.Column<string>(nullable: false),
+                    SecondName = table.Column<string>(nullable: false),
+                    DateRegistration = table.Column<string>(nullable: false),
+                    Aboniment = table.Column<string>(nullable: false),
+                    DateAboniment = table.Column<string>(nullable: false),
+                },
+
+            constraints: table =>
+            {
+                table.PrimaryKey("PK_Costumers", x => x.Id);
+            });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
