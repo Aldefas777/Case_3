@@ -7,6 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PermissionManagement.MVC", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{E226EB29-619F-40C8-86D1-39F1C0DCEEE8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBaseScript", "DataBaseScript", "{7CF54805-B00F-4A21-AD04-D3CC93B62B01}"
+	ProjectSection(SolutionItems) = preProject
+		DatabaseScript\Case_3_database.sql = DatabaseScript\Case_3_database.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
